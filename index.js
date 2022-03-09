@@ -1,6 +1,15 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const {WebhookClient} = require('dialogflow-fulfillment');
+var sheetdb = require('sheetdb-node');
+
+// create a config file
+var config = {
+  address: '8jb1q0tui9ikn',
+};
+
+// Create new client
+var client = sheetdb(config);
 
 
 const app = express()
@@ -24,12 +33,17 @@ const dialogflowFulfillment = (request, response) => {
 
     function saveToDB(agent) {
         const rate = request.body.queryResult.parameters.number;
-        agent.add("got your rating")
+        client.create({ rating: rate, time:Date.now }).then(function(data) {
+            console.log(data);
+          }, function(err){
+            console.log(err);
+          });
+        agent.add("thanks for your rating")
     }
 
     let intentMap = new Map();
     intentMap.set("testintent", sayHello)
-    intentMap.set("rate fast", saveToDB)
+    intentMap.set("rating", saveToDB)
     agent.handleRequest(intentMap)
 
 }
