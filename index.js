@@ -26,12 +26,12 @@ const dialogflowFulfillment = (request, response) => {
 
     function saveToDB(agent) {
         const rate = request.body.queryResult.parameters.number;
-        workbook.xlsx.readFile('./rating.xlsx')
+        workbook.xlsx.readFile('rating.xlsx')
            .then(function(){
             var worksheet = workbook.getWorksheet(1)
         var row =[ rate, "NOW"]
         worksheet.addRow(row)
-        return workbook.xlsx.writeFile('./rating.xlsx')})
+        return workbook.xlsx.writeFile('rating.xlsx')})
         agent.add("thanks for your rating check " + rate)
     }
 
