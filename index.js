@@ -7,7 +7,6 @@ app.use(bodyParser.json())
 const port = process.env.PORT || 3000
 
 var Excel = require('exceljs');
-const { DateTime } = require('actions-on-google');
 var workbook = new Excel.Workbook
 
 app.post('/dialogflow-fulfillment', (request, response) => {
@@ -33,7 +32,7 @@ const dialogflowFulfillment = (request, response) => {
         var row =[ rate, "NOW"]
         worksheet.addRow(row)
         return workbook.xlsx.writeFile('./rating.xlsx')})
-        agent.add("thanks for your rating" + rate)
+        agent.add("thanks for your rating check " + rate)
     }
 
     let intentMap = new Map();
