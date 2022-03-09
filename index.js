@@ -7,6 +7,8 @@ app.use(bodyParser.json())
 const port = process.env.PORT || 3000
 
 var Excel = require('exceljs');
+const { DateTime } = require('actions-on-google');
+var workbook = new Excel.Workbook
 
 app.post('/dialogflow-fulfillment', (request, response) => {
     dialogflowFulfillment(request, response)
@@ -25,13 +27,12 @@ const dialogflowFulfillment = (request, response) => {
 
     function saveToDB(agent) {
         const rate = request.body.queryResult.parameters.number;
-        workbook.xlsx.readFile(filename).then(function() {
-    // edit worksheet
-            var worksheet = workbook.getWorksheet("My Sheet");
-            worksheet.getCell("A1") = rate;})
-            .then(function() {
-            return workbook.xlsx.writeFile(filename)
-             }).then(function() {console.log("Done");});
+        workbook.xlsx.readFile('./rating.xlsx')
+           .then(function(){
+            var worksheet = workbook.getWorksheet(1)
+        var row =[ rate, "NOW"]
+        worksheet.addRow(row)
+        return workbook.xlsx.writeFile('./rating.xlsx')})
         agent.add("thanks for your rating" + rate)
     }
 
