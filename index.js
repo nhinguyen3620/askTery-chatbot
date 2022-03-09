@@ -7,7 +7,7 @@ app.use(bodyParser.json())
 const port = process.env.PORT || 3000
 
 var Excel = require('exceljs');
-var workbook = new Excel.Workbook
+var workbook = new Excel.Workbook()
 
 app.post('/dialogflow-fulfillment', (request, response) => {
     dialogflowFulfillment(request, response)
@@ -31,7 +31,7 @@ const dialogflowFulfillment = (request, response) => {
             var row =[rate]
             worksheet.addRow(row)
             return workbook.xlsx.writeFile('rating.xlsx')})
-        agent.add("thanks for your rating check 1 " + rate)
+        agent.add("thanks for your rating check 2 " + rate)
     }
 
     let intentMap = new Map();
