@@ -38,7 +38,7 @@ const dialogflowFulfillment = (request, response) => {
           }, function(err){
             console.log(err);
           });
-        agent.add("thanks for your rating")
+        agent.add("thanks for your rating" + rate)
     }
 
     let intentMap = new Map();
