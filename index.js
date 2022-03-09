@@ -1,20 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const {WebhookClient} = require('dialogflow-fulfillment');
-var sheetdb = require('sheetdb-node');
-
-// create a config file
-var config = {
-  address: '8jb1q0tui9ikn',
-};
-
-// Create new client
-var client = sheetdb(config);
-
 
 const app = express()
 app.use(bodyParser.json())
 const port = process.env.PORT || 3000
+
+var Excel = require('exceljs');
 
 app.post('/dialogflow-fulfillment', (request, response) => {
     dialogflowFulfillment(request, response)
@@ -33,11 +25,13 @@ const dialogflowFulfillment = (request, response) => {
 
     function saveToDB(agent) {
         const rate = request.body.queryResult.parameters.number;
-        client.create({ rating: rate, time:Date.now }).then(function(data) {
-            console.log(data);
-          }, function(err){
-            console.log(err);
-          });
+        workbook.xlsx.readFile(filename).then(function() {
+    // edit worksheet
+            var worksheet = workbook.getWorksheet("My Sheet");
+            worksheet.getCell("A1") = rate;})
+            .then(function() {
+            return workbook.xlsx.writeFile(filename)
+             }).then(function() {console.log("Done");});
         agent.add("thanks for your rating" + rate)
     }
 
