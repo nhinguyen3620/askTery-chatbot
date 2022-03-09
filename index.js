@@ -32,7 +32,7 @@ const dialogflowFulfillment = (request, response) => {
         var row =[ rate, "NOW"]
         worksheet.addRow(row)
         return workbook.xlsx.writeFile('rating.xlsx')})
-        agent.add("thanks for your rating check " + rate)
+        agent.add("thanks for your rating check 1" + rate)
     }
 
     let intentMap = new Map();
