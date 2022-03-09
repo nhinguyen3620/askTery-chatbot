@@ -24,7 +24,7 @@ const dialogflowFulfillment = (request, response) => {
 
     function saveToDB(agent) {
         const rate = request.body.queryResult.parameters.number;
-        agent.add(rate.toString())
+        agent.add("got your rating")
     }
 
     let intentMap = new Map();
