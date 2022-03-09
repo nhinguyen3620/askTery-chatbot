@@ -23,7 +23,7 @@ const dialogflowFulfillment = (request, response) => {
     }
 
     function saveToDB(agent) {
-        const rate = request.parameter;
+        const rate = request.body.queryResult.parameters.number;
         agent.add(rate)
     }
 
