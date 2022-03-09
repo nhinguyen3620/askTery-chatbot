@@ -26,7 +26,11 @@ const dialogflowFulfillment = (request, response) => {
 
     function saveToDB(agent) {
         const rate = request.body.queryResult.parameter.value1;
-        client.create({  Rating: 25, Time: Date.now})
+        client.create({ rating: rate, time:Date.now }).then(function(data) {
+            console.log(data);
+          }, function(err){
+            console.log(err);
+          });
         agent.add("Finish storing rating.")
     }
 
