@@ -43,7 +43,7 @@ const dialogflowFulfillment = (request, response) => {
 
     let intentMap = new Map();
     intentMap.set("testintent", sayHello)
-    intentMap.set("rating", saveToDB)
+    intentMap.set("rate fast", saveToDB)
     agent.handleRequest(intentMap)
 
 }
