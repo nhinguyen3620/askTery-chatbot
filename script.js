@@ -1,4 +1,3 @@
-
 let _speechSynth
 let _voices
 const _cache = {}
@@ -72,6 +71,11 @@ loadVoicesWhenAvailable(function () {
  console.log("loaded") 
 })
 
+
+function getDirection1() {
+  var url = "https://www.google.com/maps/dir/Royal+Inn+%26+Suites,+Lobdell+Boulevard,+Baton+Rouge,+LA/Theatre+Baton+Rouge,+Florida+Boulevard,+Baton+Rouge,+LA/@30.4561782,-91.1151526,18z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8626a391f03a0f9d:0x6523b48a2abe6455!2m2!1d-91.1118394!2d30.4568789!1m5!1m1!1s0x8626a3ead1639d95:0xa394b44ba7c9e4e4!2m2!1d-91.1164082!2d30.4555838!3e3";
+  $.getJSON(url);
+}
 function mainMenu() {
     playByText("en-US", "Welcome to Royal Inn and Suit Hotel. Please choose one of the following options: 1: Contact Information. 2: Hotel Policies. 3. Reservation. 4. Amenities.  5. Facilities.  6. Nearby Attractions");
     console.log("alo");
@@ -148,6 +152,12 @@ if (annyang) {
     }
     annyang.addCommands(policiesCommand);
 
+    const directions = {
+      'get direction 1' : getDirection1,
+    }
+
+    annyang.addCommands(directions);
+
     //overwrite previous commands
     //annyang.init(policiesCommand,true);
 
@@ -170,4 +180,3 @@ if (annyang) {
     // Start listening.
     //annyang.start();
   }
-
