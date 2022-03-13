@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width-device-width, initial-scale=1">
+    <title>Ask Tery</title>
+    <style>
+      df-messenger {
+       --df-messenger-bot-message: #878fac;
+       --df-messenger-button-titlebar-color: #df9b56;
+       --df-messenger-chat-background-color: #fafafa;
+       --df-messenger-font-color: white;
+       --df-messenger-send-icon: #878fac;
+       --df-messenger-user-message: #2e6949;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <button type="button" id="button">Speak</button>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Chat with Us"
+      agent-id="fe9c341b-f0c3-45a7-b4d8-44d8229af503"
+      language-code="en"
+    ></df-messenger>
+
+    
+
+      
+     
+  </body>
+</html>
