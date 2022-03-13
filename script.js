@@ -98,7 +98,7 @@ function option5() {
 }
 
 function option6() {
-    playByText("en-US", "");
+    playByText("en-US", "Here are some nearby attractions around our location: Theater Baton Rouge, Texas Club Concert Venue, Circle Bowl, Independence Park, Civil Axe Throwing, Hollywood Casino, Blue Bayou Waterpark.");
 }
 
 function option21() {
@@ -133,11 +133,13 @@ if (annyang) {
     const mainOption = {  
         'contact information': option1,
         'hotel policies': option2,
-        'reservation': option3, "I want to make a reservation": option3
+        'reservation': option3, "I want to make a reservation": option3,
+        'amenities': option4,
+        'facilities': option5,
+        'nearby attractions': option6
     };
 
     annyang.addCommands(mainOption);
-    // //annyang.start();
     const policiesCommand = {
         'accessibility policies': option21,
         'general policies': option22,
@@ -146,7 +148,6 @@ if (annyang) {
     }
     annyang.addCommands(policiesCommand);
 
-    const 
     //overwrite previous commands
     //annyang.init(policiesCommand,true);
 
