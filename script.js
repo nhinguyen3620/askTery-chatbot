@@ -1,3 +1,4 @@
+
 let _speechSynth
 let _voices
 const _cache = {}
@@ -71,13 +72,8 @@ loadVoicesWhenAvailable(function () {
  console.log("loaded") 
 })
 
-
-function getDirection1() {
-  var url = "https://www.google.com/maps/dir/Royal+Inn+%26+Suites,+Lobdell+Boulevard,+Baton+Rouge,+LA/Theatre+Baton+Rouge,+Florida+Boulevard,+Baton+Rouge,+LA/@30.4561782,-91.1151526,18z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8626a391f03a0f9d:0x6523b48a2abe6455!2m2!1d-91.1118394!2d30.4568789!1m5!1m1!1s0x8626a3ead1639d95:0xa394b44ba7c9e4e4!2m2!1d-91.1164082!2d30.4555838!3e3";
-  $.getJSON(url);
-}
 function mainMenu() {
-    playByText("en-US", "Welcome to Royal Inn and Suit Hotel. Please choose one of the following options: 1: Contact Information. 2: Hotel Policies. 3. Reservation. 4. Amenities.  5. Facilities.  6. Nearby Attractions");
+    playByText("en-US", "Welcome to Royal Inn and Suit Hotel. Please choose one of the following options: 1: Contact Information. 2: Hotel Policies. 3. Reservation. 4. Hotel Properties. 5. Direction. 6. Nearby Attractions");
     console.log("alo");
 }
 
@@ -94,10 +90,22 @@ function option3() {
 }
 
 function option4() {
-    playByText("en-US", "We offer the following amenities: Hairdryer, Microwave, Toiletries, Iron and Ironing Board, Coffee Maker, Alarm Clock, Cable, Satellite TV, Free Wifi, Free Breakfast");
+  playByText("en-US", "Please choose one of the following options: Amenities, Facilities.");
 }
 
 function option5() {
+  playByText("en-US", "Please say the name of the airport that you arrived in the format: From blank");
+}
+
+function option6() {
+  playByText("en-US", "Please choose one of the following option for nearby attractions: 1: Theatre Baton Rouge.  2. Texas Club Concert Venue.  3. Circle Bowl.  4. Independence Park");
+}
+
+function option41() {
+    playByText("en-US", "We offer the following amenities: Hairdryer, Microwave, Toiletries, Iron and Ironing Board, Coffee Maker, Alarm Clock, Cable, Satellite TV, Free Wifi, Free Breakfast");
+}
+
+function option42() {
     playByText("en-US", "We offer the following facilities: swimming pool, Free Parking, Fitness Center, Meeting and Conference Room, Steam and Sauna Bath, Laundry ");
 }
 
@@ -121,7 +129,15 @@ function option24() {
     playByText("en-US", "We have smoke-free policies accross the hotel. There is no guest room with smoking facilities");
 }
 
+function getDirectionFrom(tag) {
+  var url = "https://www.google.com/maps/dir/Royal+Inn+%26+Suites,+Lobdell+Boulevard,+Baton+Rouge,+LA/" + tag;
+  window.open(url);
+}
 
+function getDirectionTo(tag) {
+  var url = "https://www.google.com/maps/dir/" + tag + "/Royal+Inn+%26+Suites,+Lobdell+Boulevard,+Baton+Rouge,+LA/";
+  window.open(url);
+}
 
 if (annyang) {
     document.getElementById('button').click();
@@ -138,8 +154,8 @@ if (annyang) {
         'contact information': option1,
         'hotel policies': option2,
         'reservation': option3, "I want to make a reservation": option3,
-        'amenities': option4,
-        'facilities': option5,
+        'hotel properties' : option4, 'properties' : option4,
+        'direction' : option5, 'directions' : option5,
         'nearby attractions': option6
     };
 
@@ -153,11 +169,10 @@ if (annyang) {
     annyang.addCommands(policiesCommand);
 
     const directions = {
-      'get direction 1' : getDirection1,
+      'go to *tag' : getDirectionFrom,
+      'from *tag' : getDirectionTo
     }
-
     annyang.addCommands(directions);
-
     //overwrite previous commands
     //annyang.init(policiesCommand,true);
 
