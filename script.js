@@ -98,7 +98,7 @@ function option5() {
 }
 
 function option6() {
-  playByText("en-US", "Please choose one of the following option for nearby attractions: 1: Theatre Baton Rouge.  2. Texas Club Concert Venue.  3. Circle Bowl.  4. Independence Park");
+  playByText("en-US", "There are some tourist attrions around the hotel: 1: Theatre Baton Rouge.  2. Texas Club Concert Venue.  3. Circle Bowl.  4. Independence Park. Please respond in format: go to plus the name of your desired location");
 }
 
 function option41() {
@@ -109,9 +109,6 @@ function option42() {
     playByText("en-US", "We offer the following facilities: swimming pool, Free Parking, Fitness Center, Meeting and Conference Room, Steam and Sauna Bath, Laundry ");
 }
 
-function option6() {
-    playByText("en-US", "Here are some nearby attractions around our location: Theater Baton Rouge, Texas Club Concert Venue, Circle Bowl, Independence Park, Civil Axe Throwing, Hollywood Casino, Blue Bayou Waterpark.");
-}
 
 function option21() {
     playByText("en-US", "We offer accessible guest rooms reserved for only individuals with disabilities. Wheelchair and wheelchair-accessible parking space are also accessible in our hotel.");
