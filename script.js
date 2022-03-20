@@ -139,6 +139,19 @@ function getDirectionTo(tag) {
   window.open(url);
 }
 
+function optionCancel() {
+  playByText ("en-US", "Royal Inn & Suites does have fully refundable room rates available to book on our site. If you've booked a fully refundable room rate, this can be cancelled up to a few days before check-in.");
+}
+
+function covidRestriction() {
+  playByText ("en-US", "Social distancing measures are in place; staff at Royal Inn & Suites wear personal protective equipment; guests are provided with hand sanitizer; masks are required in public areas.");
+}
+
+function hotelReview() {
+  var url = "https://www.expedia.com/Baton-Rouge-Hotels-SureStay-Plus-Hotel-By-Best-Western-Baton-Rouge.h20010895.Hotel-Information";
+  window.open(url);
+}
+
 if (annyang) {
     document.getElementById('button').click();
     
@@ -173,6 +186,28 @@ if (annyang) {
       'from *tag' : getDirectionTo
     }
     annyang.addCommands(directions);
+
+    const cancelPolicies = {
+      'cancel policy' : optionCancel, 'how to cancel' : optionCancel, 'cancel reservation' : optionCancel,
+      'refund' : optionCancel,
+      'cancellation policy' : optionCancel,
+    }
+    annyang.addCommands(cancelPolicies);
+
+    const covid = {
+      'covid-19' : covidRestriction, 'corona virus' : covidRestriction, 
+      'covid restriction' : covidRestriction,
+      'does this hotel practice social distancing' : covidRestriction
+    }
+    annyang.addCommands(covid);
+
+    const review = {
+      'rating of this hotel' : hotelReview,
+      'review of this hotel' : hotelReview,
+    }
+    annyang.addCommands(review);
+
+
     //overwrite previous commands
     //annyang.init(policiesCommand,true);
 
