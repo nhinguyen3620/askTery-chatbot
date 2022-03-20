@@ -101,15 +101,6 @@ function option6() {
   playByText("en-US", "There are some tourist attrions around the hotel: 1: Theatre Baton Rouge.  2. Texas Club Concert Venue.  3. Circle Bowl.  4. Independence Park. Please respond in format: go to plus the name of your desired location");
 }
 
-function option41() {
-    playByText("en-US", "We offer the following amenities: Hairdryer, Microwave, Toiletries, Iron and Ironing Board, Coffee Maker, Alarm Clock, Cable, Satellite TV, Free Wifi, Free Breakfast");
-}
-
-function option42() {
-    playByText("en-US", "We offer the following facilities: swimming pool, Free Parking, Fitness Center, Meeting and Conference Room, Steam and Sauna Bath, Laundry ");
-}
-
-
 function option21() {
     playByText("en-US", "We offer accessible guest rooms reserved for only individuals with disabilities. Wheelchair and wheelchair-accessible parking space are also accessible in our hotel.");
 }
@@ -124,6 +115,14 @@ function option23() {
 
 function option24() {
     playByText("en-US", "We have smoke-free policies accross the hotel. There is no guest room with smoking facilities");
+}
+
+function option41() {
+  playByText("en-US", "We offer the following amenities: Hairdryer, Microwave, Toiletries, Iron and Ironing Board, Coffee Maker, Alarm Clock, Cable, Satellite TV, Free Wifi, Free Breakfast");
+}
+
+function option42() {
+  playByText("en-US", "We offer the following facilities: swimming pool, Free Parking, Fitness Center, Meeting and Conference Room, Steam and Sauna Bath, Laundry ");
 }
 
 function getDirectionFrom(tag) {
