@@ -177,8 +177,8 @@ if (annyang) {
     }
     annyang.addCommands(triggerCmd);
     
-    annyang.start();
-
+    
+    annyang.start({ autoRestart: true });
     const mainOption = {  
         'contact information': option1, 'how can I contact the hotel': option1,
         'hotel policies': option2,
@@ -187,8 +187,9 @@ if (annyang) {
         'direction' : option5, 'directions' : option5,
         'nearby attractions': option6, 'is there any attractions nearby the hotel?': option6
     };
-
     annyang.addCommands(mainOption);
+    annyang.start({ autoRestart: true });
+
     const policiesCommand = {
         'accessibility policies': option21,
         'general policies': option22,
@@ -197,12 +198,14 @@ if (annyang) {
         'smoking policies': option24
     }
     annyang.addCommands(policiesCommand);
+    annyang.start({ autoRestart: true });
 
     const directions = {
       'go to *tag' : getDirectionFrom,
       'from *tag' : getDirectionTo
     }
     annyang.addCommands(directions);
+    annyang.start({ autoRestart: true });
 
     const cancelPolicies = {
       'cancel policy' : optionCancel, 'how to cancel' : optionCancel, 'cancel reservation' : optionCancel,
@@ -210,6 +213,7 @@ if (annyang) {
       'cancellation policy' : optionCancel,
     }
     annyang.addCommands(cancelPolicies);
+    annyang.start({ autoRestart: true });
 
     const covid = {
       'covid-19' : covidRestriction, 'corona virus' : covidRestriction, 
@@ -217,6 +221,7 @@ if (annyang) {
       'does this hotel practice social distancing' : covidRestriction
     }
     annyang.addCommands(covid);
+    annyang.start({ autoRestart: true });
 
     const review = {
       'rating of this hotel' : hotelReview,
@@ -224,6 +229,7 @@ if (annyang) {
       'show me the review of this hotel': hotelReview,
     }
     annyang.addCommands(review);
+    annyang.start({ autoRestart: true });
 
     const checkInOut = {
       'What time can I check in?' : checkin, 'Can I check in early?' : checkin,
@@ -231,30 +237,39 @@ if (annyang) {
       'What time should I check out?': checkin, 'Tell me the check out time?' : checkin, 'check in time': checkin
     }
     annyang.addCommands(checkInOut);
+    annyang.start({ autoRestart: true });
 
     const parking = {
       'does your hotel have a parking lot?': parkingOption, 'Is there handicapped parking space?': parkingOption,
       'do I need to pay for parking?': parkingOption, 'parking lot availability': parkingOption, 'parking space': parkingOption,
-      'does this hotel provide free parking': parkingOption
+      'does this hotel provide free parking': parkingOption, 'parking lot': parkingOption
     }
     annyang.addCommands(parking);
-    
+    annyang.start({ autoRestart: true });
+
     const discount = {
       'is there any discount for veterans?': specialDiscount, 'is there any discount for seniors?': specialDiscount, 'is there any discount for students': specialDiscount,
       'can i get it cheaper if i am a students?': specialDiscount, 'do you offer any special discount?': specialDiscount, 'is there any discount available': specialDiscount,
-      'what kind of discounts do you have?': specialDiscount, 'is there any way i can get it cheaper?': specialDiscount
+      'what kind of discounts do you have?': specialDiscount, 'is there any way i can get it cheaper?': specialDiscount, 'special discount': specialDiscount
     }
     annyang.addCommands(discount);
+    annyang.start({ autoRestart: true });
 
     const roomService = {
       'I need to request some service for my room': roomServiceRequest, 'room service request': roomServiceRequest, 'my room runs out of toiletries': roomServiceRequest, 'i need more towels for my room': roomServiceRequest,
       'my room needs some services': roomServiceRequest, "I would like more towels for my room": roomServiceRequest, 'my room runs of of towels': roomServiceRequest
     }
     annyang.addCommands(roomService);
+    annyang.start({ autoRestart: true });
+   
 
     const checkInDocument = {
-      'what kind of documents are required during check in?': checkInDoc, 'what do I need to bring upon check in': checkInDoc, 'what is required upon check in': checkInDoc, 'what is required during check in': checkInDoc,
+      'what kind of documents are required during check in?': checkInDoc, 'what do I need to bring upon check in': checkInDoc, 'what is required upon check in': checkInDoc, 'what is required during check in': checkInDoc, 'check in document': checkInDoc,
       'Do I need to bring anything to check in?': checkInDoc, 'what kind of documents should I bring for check in': checkInDoc, 'what kind of documents are needed during check in?': checkInDoc, 'what is needed upon check in': checkInDoc, 'what is needed during check in': checkInDoc
     }
     annyang.addCommands(checkInDocument);
+
+
+    annyang.start({ autoRestart: true });
+
   }
