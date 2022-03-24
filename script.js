@@ -74,7 +74,6 @@ loadVoicesWhenAvailable(function () {
 
 function mainMenu() {
     playByText("en-US", "Welcome to Royal Inn and Suit Hotel. Please choose one of the following options: 1: Contact Information. 2: Hotel Policies. 3. Reservation. 4. Hotel Properties. 5. Direction. 6. Nearby Attractions");
-    console.log("alo");
 }
 
 function option1() {
@@ -148,6 +147,27 @@ function hotelReview() {
   window.open(url);
 }
 
+function checkin() {
+  playByText ("en-US", "Check-in time is from 3 PM. Check-out time is before 11 AM.");
+}
+
+function parkingOption() {
+  playByText ("en-US", "We have an on-site parking available for free. Wheelchair-accessible parking space is also available.");
+}
+
+function specialDiscount() {
+  playByText ("en-US", "We offer 10% discount for only seniors and veterans.");
+}
+
+function roomServiceRequest() {
+  var url = "https://forms.gle/A4FieUrYuWF47de5A";
+  window.open(url);
+}
+
+function checkInDoc() {
+  playByText ("en-US", "You will need to show a photo ID, and a credit card upon check-in.");
+}
+
 if (annyang) {
     document.getElementById('button').click();
     
@@ -160,19 +180,20 @@ if (annyang) {
     annyang.start();
 
     const mainOption = {  
-        'contact information': option1,
+        'contact information': option1, 'how can I contact the hotel': option1,
         'hotel policies': option2,
-        'reservation': option3, "I want to make a reservation": option3,
+        'reservation': option3, "I want to make a reservation": option3, 'I want to reserve a room': option3,
         'hotel properties' : option4, 'properties' : option4,
         'direction' : option5, 'directions' : option5,
-        'nearby attractions': option6
+        'nearby attractions': option6, 'is there any attractions nearby the hotel?': option6
     };
 
     annyang.addCommands(mainOption);
     const policiesCommand = {
         'accessibility policies': option21,
         'general policies': option22,
-        'pet policies': option23,
+        'pet policies': option23, 'Can I bring my dogs to the hotel?':option23, 'is your hotel pet-friendly?':option23, 'can i bring my furry babies with me?': option23, 
+        'how much does it cost to bring service animals':option23, 'are service animals exempt from fees?':option23, 'do i need to pay if i bring my service animals with me?': option23,
         'smoking policies': option24
     }
     annyang.addCommands(policiesCommand);
@@ -185,7 +206,7 @@ if (annyang) {
 
     const cancelPolicies = {
       'cancel policy' : optionCancel, 'how to cancel' : optionCancel, 'cancel reservation' : optionCancel,
-      'refund' : optionCancel,
+      'refund' : optionCancel, 'can i get a refund if i cancel my reservation?':optionCancel,
       'cancellation policy' : optionCancel,
     }
     annyang.addCommands(cancelPolicies);
@@ -200,29 +221,40 @@ if (annyang) {
     const review = {
       'rating of this hotel' : hotelReview,
       'review of this hotel' : hotelReview,
+      'show me the review of this hotel': hotelReview,
     }
     annyang.addCommands(review);
 
+    const checkInOut = {
+      'What time can I check in?' : checkin, 'Can I check in early?' : checkin,
+      'How early can I check in?': checkin, 'Is it possible to check in early?': checkin,
+      'What time should I check out?': checkin, 'Tell me the check out time?' : checkin, 'check in time': checkin
+    }
+    annyang.addCommands(checkInOut);
 
-    //overwrite previous commands
-    //annyang.init(policiesCommand,true);
-
-
-
-    //speechSynthesis.speak(new SpeechSynthesisUtterance("Hello, this is your browser speaking."));
-
- 
-      
-     
-
-    //   var msg = new SpeechSynthesisUtterance();
-    //   msg.text = "this is a response";
-      //setTimeout(() => playByText("en-US", "A response"), 100);
-     // alert("This is a response!");
+    const parking = {
+      'does your hotel have a parking lot?': parkingOption, 'Is there handicapped parking space?': parkingOption,
+      'do I need to pay for parking?': parkingOption, 'parking lot availability': parkingOption, 'parking space': parkingOption,
+      'does this hotel provide free parking': parkingOption
+    }
+    annyang.addCommands(parking);
     
-     //document.getElementById('button').click();   
+    const discount = {
+      'is there any discount for veterans?': specialDiscount, 'is there any discount for seniors?': specialDiscount, 'is there any discount for students': specialDiscount,
+      'can i get it cheaper if i am a students?': specialDiscount, 'do you offer any special discount?': specialDiscount, 'is there any discount available': specialDiscount,
+      'what kind of discounts do you have?': specialDiscount, 'is there any way i can get it cheaper?': specialDiscount
+    }
+    annyang.addCommands(discount);
 
-  
-    // Start listening.
-    //annyang.start();
+    const roomService = {
+      'I need to request some service for my room': roomServiceRequest, 'room service request': roomServiceRequest, 'my room runs out of toiletries': roomServiceRequest, 'i need more towels for my room': roomServiceRequest,
+      'my room needs some services': roomServiceRequest, "I would like more towels for my room": roomServiceRequest, 'my room runs of of towels': roomServiceRequest
+    }
+    annyang.addCommands(roomService);
+
+    const checkInDocument = {
+      'what kind of documents are required during check in?': checkInDoc, 'what do I need to bring upon check in': checkInDoc, 'what is required upon check in': checkInDoc, 'what is required during check in': checkInDoc,
+      'Do I need to bring anything to check in?': checkInDoc, 'what kind of documents should I bring for check in': checkInDoc, 'what kind of documents are needed during check in?': checkInDoc, 'what is needed upon check in': checkInDoc, 'what is needed during check in': checkInDoc
+    }
+    annyang.addCommands(checkInDocument);
   }
