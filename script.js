@@ -45,11 +45,10 @@ function getVoices (locale) {
  * @param onEnd callback if tts is finished
  */
 
-function playByText (locale, text, onEnd) {
+
+function playByText (locale, text) {
   const voices = getVoices(locale)
 
-  // TODO load preference here, e.g. male / female etc.
-  // TODO but for now we just use the first occurrence
   const utterance = new window.SpeechSynthesisUtterance()
   utterance.voice = voices[0]
   utterance.voiceURI = 'native'
@@ -59,15 +58,10 @@ function playByText (locale, text, onEnd) {
   utterance.text = text
   utterance.lang = locale
 
-  if (onEnd) {
-    utterance.onend = onEnd
-  }
-
   _speechSynth.cancel() // cancel current speak, if any is running
   _speechSynth.speak(utterance)
 }
 
-// on document ready
 loadVoicesWhenAvailable(function () {
  console.log("loaded") 
 })
@@ -156,7 +150,7 @@ function parkingOption() {
 }
 
 function room_tp(){
-  playByText = "en-US","We have two types of rooms:  Standard Single Room with one King Bed. and Standard Double Room with two King Beds";
+  playByText("en-US","We have two types of rooms:  Standard Single Room with one King Bed. and Standard Double Room with two King Beds");
 }
 
 function specialDiscount() {
@@ -164,7 +158,7 @@ function specialDiscount() {
 }
 
 function lang(){
-  playByText = "en-US","We only speak English at our hotel.";
+  playByText("en-US","We only speak English at our hotel.");
 }
 
 function roomServiceRequest() {
@@ -173,15 +167,15 @@ function roomServiceRequest() {
 }
 
 function restu(){
-  playByText = "en-US","We do not have any food or restaurant inside the hotel. Below is a list of some nearby restaurants: 1. Turkish And Greek Cafe.  2. Thai Pepper.  3. Golden Chick.  4. Jack in the Box.  5. El Rio Grande Mexican Restaurant. 6. Fleur de Lis Pizza. 7. The Velvet Cactus";
+  playByText("en-US","We do not have any food or restaurant inside the hotel. Below is a list of some nearby restaurants: 1. Turkish And Greek Cafe.  2. Thai Pepper.  3. Golden Chick.  4. Jack in the Box.  5. El Rio Grande Mexican Restaurant. 6. Fleur de Lis Pizza. 7. The Velvet Cactus");
 }
 
 function rollawaybed(){
-  playByText = "en-US","Rollaway beds are not available at the hotel. However, you are allowed to bring your own. Some of our rooms have two beds and others have one.";
+  playByText("en-US","Rollaway beds are not available at the hotel. However, you are allowed to bring your own. Some of our rooms have two beds and others have one.");
 }
 
 function checkInDoc() {
-  playByText ("en-US", "You will need to show a photo ID, and a credit card upon check-in.");
+  playByText("en-US", "You will need to show a photo ID, and a credit card upon check-in.");
 }
 
 if (annyang) {
@@ -194,7 +188,7 @@ if (annyang) {
     annyang.addCommands(triggerCmd);
     
     
-    annyang.start({ autoRestart: true });
+    annyang.start();    
     const mainOption = {  
         'contact information': option1, 'how can I contact the hotel': option1,
         'hotel policies': option2,
@@ -204,8 +198,7 @@ if (annyang) {
         'nearby attractions': option6, 'is there any attractions nearby the hotel?': option6
     };
     annyang.addCommands(mainOption);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const policiesCommand = {
         'accessibility policies': option21,
         'general policies': option22,
@@ -214,47 +207,48 @@ if (annyang) {
         'smoking policies': option24
     };
     annyang.addCommands(policiesCommand);
-    annyang.start({ autoRestart: true });
+    annyang.start();
 
+    const amenitesFacilities = {
+      'amenities': option41, 'facilities': option42
+    };
+    annyang.addCommands(amenitesFacilities);
+    annyang.start();
+    
     const directions = {
       'go to *tag' : getDirectionFrom,
       'from *tag' : getDirectionTo
     };
     annyang.addCommands(directions);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const cancelPolicies = {
       'cancel policy' : optionCancel, 'how to cancel' : optionCancel, 'cancel reservation' : optionCancel,
       'refund' : optionCancel, 'can i get a refund if i cancel my reservation?':optionCancel,
       'cancellation policy' : optionCancel,
     };
     annyang.addCommands(cancelPolicies);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const covid = {
       'covid-19' : covidRestriction, 'corona virus' : covidRestriction, 
       'covid restriction' : covidRestriction,
       'does this hotel practice social distancing' : covidRestriction
     };
     annyang.addCommands(covid);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const review = {
       'rating of this hotel' : hotelReview,
       'review of this hotel' : hotelReview,
       'show me the review of this hotel': hotelReview,
     };
     annyang.addCommands(review);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const checkInOut = {
       'What time can I check in' : checkin, 'Can I check in early' : checkin, 'check in': checkin,
       'How early can I check in': checkin, 'Is it possible to check in early': checkin,
       'What time should I check out': checkin, 'Tell me the check out time' : checkin, 'check in time': checkin, 'check out time': checkin
     };
     annyang.addCommands(checkInOut);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const roomtype ={
       'The type of room you have?':room_tp,
       'How big is your room?': room_tp,
@@ -262,69 +256,62 @@ if (annyang) {
       'Single Room?':room_tp
     };
     annyang.addCommands(roomtype);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const parking = {
       'does your hotel have a parking lot': parkingOption, 'Is there handicapped parking space': parkingOption, 'is parking free': parkingOption,
       'do I need to pay for parking': parkingOption, 'parking lot availability': parkingOption, 'parking space': parkingOption,
       'does this hotel provide free parking': parkingOption, 'parking lot': parkingOption, 'is parking available': parkingOption
     };
     annyang.addCommands(parking);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const discount = {
       'is there any discount for veterans': specialDiscount, 'is there any discount for seniors': specialDiscount, 'is there any discount for students': specialDiscount, 'veteran discount': specialDiscount,
       'can i get it cheaper if i am a students?': specialDiscount, 'do you offer any special discount': specialDiscount, 'is there any discount available': specialDiscount, 'senior discount': specialDiscount,
       'what kind of discounts do you have': specialDiscount, 'is there any way i can get it cheaper': specialDiscount, 'special discount': specialDiscount, 'student discount': specialDiscount, 'discount': specialDiscount
     };
     annyang.addCommands(discount);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const roomService = {
       'I need to request some service for my room': roomServiceRequest, 'room service request': roomServiceRequest, 'my room runs out of toiletries': roomServiceRequest, 'i need more towels for my room': roomServiceRequest,
       'my room needs some services': roomServiceRequest, "I would like more towels for my room": roomServiceRequest, 'my room runs out of of towels': roomServiceRequest
     };
     annyang.addCommands(roomService);
-    annyang.start({ autoRestart: true });
-   
+    annyang.start();   
     const rollbed = {
-      'Can I bring rollaway beds': rollawaybed, 'rollaway bed': rollawaybed, 'sleeping bag': rollawaybed,
+      'Can I bring rollaway beds': rollawaybed, 'rollaway bed': rollawaybed, 'sleeping bag': rollawaybed, 'Can I bring rollaway bed': rollawaybed,
       'Are rollaway beds available':rollawaybed, 'Are rollaway beds provided': rollawaybed,
       'Is there space for rollaway beds in your hotel':rollawaybed
     };
     annyang.addCommands(rollbed);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const checkInDocument = {
       'what kind of documents are required during check in': checkInDoc, 'what do I need to bring upon check in': checkInDoc, 'what is required upon check in': checkInDoc, 'what is required during check in': checkInDoc, 'check in document': checkInDoc,
       'Do I need to bring anything to check in': checkInDoc, 'what kind of documents should I bring for check in': checkInDoc, 'what kind of documents are needed during check in': checkInDoc, 'what is needed upon check in': checkInDoc, 'what is needed during check in': checkInDoc
     };
     annyang.addCommands(checkInDocument);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const language = {
-      'what languages are spoken': lang, 
+      'what languages are spoken': lang, 'what language is spoken': lang, 
       'spanish': lang,
-      'languages spoken': lang
+      'languages spoken': lang, 'language spoken': lang
     };
     annyang.addCommands(language);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     const restaurants = {
       'Is food provided in the hotel' :restu,
-      'Restaurants nearby': restu,
+      'Restaurants nearby': restu, 'Restaurant nearby': restu,
       'lunch' :restu, 'breakfast': restu,
       'dinner' : restu,
       'Give me a list of nearby restaurants': restu
     };
     annyang.addCommands(restaurants);
-    annyang.start({ autoRestart: true });
-
+    annyang.start();
     annyang.addCallback('result', function(phrases) {
       console.log("I think the user said: ", phrases[0]);
       console.log("But then again, it could be any of the following: ", phrases);
     });
 
+    annyang.resume();
     annyang.addCallback('soundstart', function() {
       console.log('sound detected');
     });
