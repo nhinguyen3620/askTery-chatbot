@@ -155,13 +155,29 @@ function parkingOption() {
   playByText ("en-US", "We have an on-site parking available for free. Wheelchair-accessible parking space is also available.");
 }
 
+function room_tp(){
+  playByText = "en-US","We have two types of rooms:  Standard Single Room with one King Bed. and Standard Double Room with two King Beds";
+}
+
 function specialDiscount() {
   playByText ("en-US", "We offer 10% discount for only seniors and veterans.");
+}
+
+function lang(){
+  playByText = "en-US","We only speak English at our hotel.";
 }
 
 function roomServiceRequest() {
   var url = "https://forms.gle/A4FieUrYuWF47de5A";
   window.open(url);
+}
+
+function restu(){
+  playByText = "en-US","We do not have any food or restaurant inside the hotel. Below is a list of some nearby restaurants: 1. Turkish And Greek Cafe.  2. Thai Pepper.  3. Golden Chick.  4. Jack in the Box.  5. El Rio Grande Mexican Restaurant. 6. Fleur de Lis Pizza. 7. The Velvet Cactus";
+}
+
+function rollawaybed(){
+  playByText = "en-US","Rollaway beds are not available at the hotel. However, you are allowed to bring your own. Some of our rooms have two beds and others have one.";
 }
 
 function checkInDoc() {
@@ -174,7 +190,7 @@ if (annyang) {
     const triggerCmd = {  
         'hey Terry': mainMenu,
         'hi Terry': mainMenu 
-    }
+    };
     annyang.addCommands(triggerCmd);
     
     
@@ -193,17 +209,17 @@ if (annyang) {
     const policiesCommand = {
         'accessibility policies': option21,
         'general policies': option22,
-        'pet policies': option23, 'Can I bring my dogs to the hotel?':option23, 'is your hotel pet-friendly?':option23, 'can i bring my furry babies with me?': option23, 
-        'how much does it cost to bring service animals':option23, 'are service animals exempt from fees?':option23, 'do i need to pay if i bring my service animals with me?': option23,
+        'pet policies': option23, 'Can I bring my dogs to the hotel?':option23, 'is your hotel pet-friendly?':option23, 'can i bring my furry babies with me?': option23, 'what are the pet fees': option23, 'can i bring pets': option23, 'pet fee': option23,
+        'how much does it cost to bring service animals':option23, 'are service animals exempt from fees?':option23, 'do i need to pay if i bring my service animals with me?': option23, 'service animal fees': option23,
         'smoking policies': option24
-    }
+    };
     annyang.addCommands(policiesCommand);
     annyang.start({ autoRestart: true });
 
     const directions = {
       'go to *tag' : getDirectionFrom,
       'from *tag' : getDirectionTo
-    }
+    };
     annyang.addCommands(directions);
     annyang.start({ autoRestart: true });
 
@@ -211,7 +227,7 @@ if (annyang) {
       'cancel policy' : optionCancel, 'how to cancel' : optionCancel, 'cancel reservation' : optionCancel,
       'refund' : optionCancel, 'can i get a refund if i cancel my reservation?':optionCancel,
       'cancellation policy' : optionCancel,
-    }
+    };
     annyang.addCommands(cancelPolicies);
     annyang.start({ autoRestart: true });
 
@@ -219,7 +235,7 @@ if (annyang) {
       'covid-19' : covidRestriction, 'corona virus' : covidRestriction, 
       'covid restriction' : covidRestriction,
       'does this hotel practice social distancing' : covidRestriction
-    }
+    };
     annyang.addCommands(covid);
     annyang.start({ autoRestart: true });
 
@@ -227,49 +243,94 @@ if (annyang) {
       'rating of this hotel' : hotelReview,
       'review of this hotel' : hotelReview,
       'show me the review of this hotel': hotelReview,
-    }
+    };
     annyang.addCommands(review);
     annyang.start({ autoRestart: true });
 
     const checkInOut = {
-      'What time can I check in?' : checkin, 'Can I check in early?' : checkin,
-      'How early can I check in?': checkin, 'Is it possible to check in early?': checkin,
-      'What time should I check out?': checkin, 'Tell me the check out time?' : checkin, 'check in time': checkin
-    }
+      'What time can I check in' : checkin, 'Can I check in early' : checkin, 'check in': checkin,
+      'How early can I check in': checkin, 'Is it possible to check in early': checkin,
+      'What time should I check out': checkin, 'Tell me the check out time' : checkin, 'check in time': checkin, 'check out time': checkin
+    };
     annyang.addCommands(checkInOut);
     annyang.start({ autoRestart: true });
 
+    const roomtype ={
+      'The type of room you have?':room_tp,
+      'How big is your room?': room_tp,
+      'Room Types': room_tp,
+      'Single Room?':room_tp
+    };
+    annyang.addCommands(roomtype);
+    annyang.start({ autoRestart: true });
+
     const parking = {
-      'does your hotel have a parking lot?': parkingOption, 'Is there handicapped parking space?': parkingOption,
-      'do I need to pay for parking?': parkingOption, 'parking lot availability': parkingOption, 'parking space': parkingOption,
-      'does this hotel provide free parking': parkingOption, 'parking lot': parkingOption
-    }
+      'does your hotel have a parking lot': parkingOption, 'Is there handicapped parking space': parkingOption, 'is parking free': parkingOption,
+      'do I need to pay for parking': parkingOption, 'parking lot availability': parkingOption, 'parking space': parkingOption,
+      'does this hotel provide free parking': parkingOption, 'parking lot': parkingOption, 'is parking available': parkingOption
+    };
     annyang.addCommands(parking);
     annyang.start({ autoRestart: true });
 
     const discount = {
-      'is there any discount for veterans?': specialDiscount, 'is there any discount for seniors?': specialDiscount, 'is there any discount for students': specialDiscount,
-      'can i get it cheaper if i am a students?': specialDiscount, 'do you offer any special discount?': specialDiscount, 'is there any discount available': specialDiscount,
-      'what kind of discounts do you have?': specialDiscount, 'is there any way i can get it cheaper?': specialDiscount, 'special discount': specialDiscount
-    }
+      'is there any discount for veterans': specialDiscount, 'is there any discount for seniors': specialDiscount, 'is there any discount for students': specialDiscount, 'veteran discount': specialDiscount,
+      'can i get it cheaper if i am a students?': specialDiscount, 'do you offer any special discount': specialDiscount, 'is there any discount available': specialDiscount, 'senior discount': specialDiscount,
+      'what kind of discounts do you have': specialDiscount, 'is there any way i can get it cheaper': specialDiscount, 'special discount': specialDiscount, 'student discount': specialDiscount, 'discount': specialDiscount
+    };
     annyang.addCommands(discount);
     annyang.start({ autoRestart: true });
 
     const roomService = {
       'I need to request some service for my room': roomServiceRequest, 'room service request': roomServiceRequest, 'my room runs out of toiletries': roomServiceRequest, 'i need more towels for my room': roomServiceRequest,
-      'my room needs some services': roomServiceRequest, "I would like more towels for my room": roomServiceRequest, 'my room runs of of towels': roomServiceRequest
-    }
+      'my room needs some services': roomServiceRequest, "I would like more towels for my room": roomServiceRequest, 'my room runs out of of towels': roomServiceRequest
+    };
     annyang.addCommands(roomService);
     annyang.start({ autoRestart: true });
    
+    const rollbed = {
+      'Can I bring rollaway beds': rollawaybed, 'rollaway bed': rollawaybed, 'sleeping bag': rollawaybed,
+      'Are rollaway beds available':rollawaybed, 'Are rollaway beds provided': rollawaybed,
+      'Is there space for rollaway beds in your hotel':rollawaybed
+    };
+    annyang.addCommands(rollbed);
+    annyang.start({ autoRestart: true });
 
     const checkInDocument = {
-      'what kind of documents are required during check in?': checkInDoc, 'what do I need to bring upon check in': checkInDoc, 'what is required upon check in': checkInDoc, 'what is required during check in': checkInDoc, 'check in document': checkInDoc,
-      'Do I need to bring anything to check in?': checkInDoc, 'what kind of documents should I bring for check in': checkInDoc, 'what kind of documents are needed during check in?': checkInDoc, 'what is needed upon check in': checkInDoc, 'what is needed during check in': checkInDoc
-    }
+      'what kind of documents are required during check in': checkInDoc, 'what do I need to bring upon check in': checkInDoc, 'what is required upon check in': checkInDoc, 'what is required during check in': checkInDoc, 'check in document': checkInDoc,
+      'Do I need to bring anything to check in': checkInDoc, 'what kind of documents should I bring for check in': checkInDoc, 'what kind of documents are needed during check in': checkInDoc, 'what is needed upon check in': checkInDoc, 'what is needed during check in': checkInDoc
+    };
     annyang.addCommands(checkInDocument);
-
-
     annyang.start({ autoRestart: true });
+
+    const language = {
+      'what languages are spoken': lang, 
+      'spanish': lang,
+      'languages spoken': lang
+    };
+    annyang.addCommands(languages);
+    annyang.start({ autoRestart: true });
+
+    const restaurants = {
+      'Is food provided in the hotel' :restu,
+      'Restaurants nearby': restu,
+      'lunch' :restu, 'breakfast': restu,
+      'dinner' : restu,
+      'Give me a list of nearby restaurants': restu
+    };
+    annyang.addCommands(restaurants);
+    annyang.start({ autoRestart: true });
+
+    annyang.addCallback('result', function(phrases) {
+      console.log("I think the user said: ", phrases[0]);
+      console.log("But then again, it could be any of the following: ", phrases);
+    });
+
+    annyang.addCallback('soundstart', function() {
+      console.log('sound detected');
+    });
+    
+    annyang.addCallback('result', function() {
+      console.log('sound stopped');
+    });
 
   }
