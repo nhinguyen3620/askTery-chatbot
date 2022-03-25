@@ -307,7 +307,7 @@ if (annyang) {
       'spanish': lang,
       'languages spoken': lang
     };
-    annyang.addCommands(languages);
+    annyang.addCommands(language);
     annyang.start({ autoRestart: true });
 
     const restaurants = {
