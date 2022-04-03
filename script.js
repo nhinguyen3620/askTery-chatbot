@@ -190,21 +190,21 @@ if (annyang) {
     
     annyang.start();    
     const mainOption = {  
-        'contact information': option1, 'how can I contact the hotel': option1,
-        'hotel policies': option2,
-        'reservation': option3, "I want to make a reservation": option3, 'I want to reserve a room': option3,
-        'hotel properties' : option4, 'properties' : option4,
-        'direction' : option5, 'directions' : option5,
-        'nearby attractions': option6, 'is there any attractions nearby the hotel?': option6
+        'contact information': option1, 'how can I contact the hotel': option1, 'one contact information': option1,
+        'hotel policies': option2, 'two hotel policies': option2,
+        'reservation': option3, "three reservation": option3, "I want to make a reservation": option3, 'I want to reserve a room': option3,
+        'hotel properties' : option4, 'properties' : option4, "four hotel properties":option4,
+        'direction' : option5, 'directions' : option5, "five direction":option5, "five directions":option5,
+        'nearby attractions': option6, 'nearby attraction': option6,'six nearby attraction': option6, "six nearby attractions": option6, "is there any attractions nearby the hotel?": option6
     };
     annyang.addCommands(mainOption);
     annyang.start();
     const policiesCommand = {
-        'accessibility policies': option21,
-        'general policies': option22,
-        'pet policies': option23, 'Can I bring my dogs to the hotel?':option23, 'is your hotel pet-friendly?':option23, 'can i bring my furry babies with me?': option23, 'what are the pet fees': option23, 'can i bring pets': option23, 'pet fee': option23,
+        'accessibility policies': option21, "one accessibility policies": option21, "one accessibility policy": option21, "accessibility policy": option21,
+        'general policies': option22, "general policy": option22, "two general policies": option22, "two general policy": option22,
+        'pet policies': option23, 'pet policy': option23, 'three pet policies': option23, 'three pet policy': option23,'Can I bring my dogs to the hotel?':option23, 'is your hotel pet friendly?':option23, 'can i bring my furry babies with me?': option23, 'what are the pet fees': option23, 'can i bring pets': option23, 'pet fee': option23,
         'how much does it cost to bring service animals':option23, 'are service animals exempt from fees?':option23, 'do i need to pay if i bring my service animals with me?': option23, 'service animal fees': option23,
-        'smoking policies': option24
+        'smoking policies': option24, 'smoking policy': option24, 'four smoking policies': option24, 'four smoking policy': option23
     };
     annyang.addCommands(policiesCommand);
     annyang.start();
@@ -214,7 +214,7 @@ if (annyang) {
     };
     annyang.addCommands(amenitesFacilities);
     annyang.start();
-    
+
     const directions = {
       'go to *tag' : getDirectionFrom,
       'from *tag' : getDirectionTo
@@ -224,7 +224,7 @@ if (annyang) {
     const cancelPolicies = {
       'cancel policy' : optionCancel, 'how to cancel' : optionCancel, 'cancel reservation' : optionCancel,
       'refund' : optionCancel, 'can i get a refund if i cancel my reservation?':optionCancel,
-      'cancellation policy' : optionCancel,
+      'cancellation policy' : optionCancel, 'cancel policies': optionCancel
     };
     annyang.addCommands(cancelPolicies);
     annyang.start();
@@ -259,14 +259,14 @@ if (annyang) {
     annyang.start();
     const parking = {
       'does your hotel have a parking lot': parkingOption, 'Is there handicapped parking space': parkingOption, 'is parking free': parkingOption,
-      'do I need to pay for parking': parkingOption, 'parking lot availability': parkingOption, 'parking space': parkingOption,
+      'do I need to pay for parking': parkingOption, 'parking availability': parkingOption, 'parking space': parkingOption, 'parking': parkingOption, 'parking spaces': parkingOption,
       'does this hotel provide free parking': parkingOption, 'parking lot': parkingOption, 'is parking available': parkingOption
     };
     annyang.addCommands(parking);
     annyang.start();
     const discount = {
       'is there any discount for veterans': specialDiscount, 'is there any discount for seniors': specialDiscount, 'is there any discount for students': specialDiscount, 'veteran discount': specialDiscount,
-      'can i get it cheaper if i am a students?': specialDiscount, 'do you offer any special discount': specialDiscount, 'is there any discount available': specialDiscount, 'senior discount': specialDiscount,
+      'can i get it cheaper if i am a students?': specialDiscount, 'do you offer any special discount': specialDiscount, 'is there any discount available': specialDiscount, 'senior discount': specialDiscount, "special discounts": specialDiscount,
       'what kind of discounts do you have': specialDiscount, 'is there any way i can get it cheaper': specialDiscount, 'special discount': specialDiscount, 'student discount': specialDiscount, 'discount': specialDiscount
     };
     annyang.addCommands(discount);
@@ -285,24 +285,24 @@ if (annyang) {
     annyang.addCommands(rollbed);
     annyang.start();
     const checkInDocument = {
-      'what kind of documents are required during check in': checkInDoc, 'what do I need to bring upon check in': checkInDoc, 'what is required upon check in': checkInDoc, 'what is required during check in': checkInDoc, 'check in document': checkInDoc,
+      'what kind of documents are required during check in': checkInDoc, 'what do I need to bring upon check in': checkInDoc, 'what is required upon check in': checkInDoc, 'what is required during check in': checkInDoc, 'check in document': checkInDoc, 'check in documents': checkInDoc,
       'Do I need to bring anything to check in': checkInDoc, 'what kind of documents should I bring for check in': checkInDoc, 'what kind of documents are needed during check in': checkInDoc, 'what is needed upon check in': checkInDoc, 'what is needed during check in': checkInDoc
     };
     annyang.addCommands(checkInDocument);
     annyang.start();
     const language = {
       'what languages are spoken': lang, 'what language is spoken': lang, 
-      'spanish': lang,
+      'spanish': lang, "language": lang, 'languages': lang,
       'languages spoken': lang, 'language spoken': lang
     };
     annyang.addCommands(language);
     annyang.start();
     const restaurants = {
-      'Is food provided in the hotel' :restu,
-      'Restaurants nearby': restu, 'Restaurant nearby': restu,
-      'lunch' :restu, 'breakfast': restu,
+      'is food provided in the hotel' :restu,
+      'restaurants nearby': restu, 'restaurant nearby': restu, 'nearby restaurant': restu,
+      'lunch' :restu, 'breakfast': restu, 'nearby restaurants': restu,
       'dinner' : restu,
-      'Give me a list of nearby restaurants': restu
+      'give me a list of nearby restaurants': restu
     };
     annyang.addCommands(restaurants);
     annyang.start();
