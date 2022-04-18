@@ -79,7 +79,9 @@ function option2() {
 }
 
 function option3() {
-    playByText("en-US", "Our hotel has not supported making reservation through chatbot. Please call us at (2,2,5) 8,3,1,9,2,5,5 for further help");
+    var url = "https://www.expedia.com/Baton-Rouge-Hotels-SureStay-Plus-Hotel-By-Best-Western-Baton-Rouge.h20010895.Hotel-Information";
+    window.open(url);
+    //playByText("en-US", "Our hotel has not supported making reservation through chatbot. Please call us at (2,2,5) 8,3,1,9,2,5,5 for further help");
 }
 
 function option4() {
@@ -170,6 +172,11 @@ function restu(){
   playByText("en-US","We do not have any food or restaurant inside the hotel. Below is a list of some nearby restaurants: 1. Turkish And Greek Cafe.  2. Thai Pepper.  3. Golden Chick.  4. Jack in the Box.  5. El Rio Grande Mexican Restaurant. 6. Fleur de Lis Pizza. 7. The Velvet Cactus");
 }
 
+function airportDir() {
+  var url = "https://www.google.com/maps/dir/Royal+Inn+%26+Suites,+Lobdell+Boulevard,+Baton+Rouge,+LA/Baton+Rouge+Metropolitan+Airport,+Jackie+Cochran+Dr,+Baton+Rouge,+LA/@30.4911625,-91.1713515,13z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8626a391f03a0f9d:0x6523b48a2abe6455!2m2!1d-91.1118394!2d30.4568789!1m5!1m1!1s0x86269f5d17e983bb:0x84837c7d8e50904d!2m2!1d-91.151461!2d30.5323599!3e0";
+  window.open(url);
+}
+
 function rollawaybed(){
   playByText("en-US","Rollaway beds are not available at the hotel. However, you are allowed to bring your own. Some of our rooms have two beds and others have one.");
 }
@@ -190,19 +197,19 @@ if (annyang) {
     
     annyang.start();    
     const mainOption = {  
-        'contact information': option1, 'how can I contact the hotel': option1, 'one contact information': option1,
-        'hotel policies': option2, 'two hotel policies': option2,
-        'reservation': option3, "three reservation": option3, "I want to make a reservation": option3, 'I want to reserve a room': option3,
-        'hotel properties' : option4, 'properties' : option4, "four hotel properties":option4,
-        'direction' : option5, 'directions' : option5, "five direction":option5, "five directions":option5,
-        'nearby attractions': option6, 'nearby attraction': option6,'six nearby attraction': option6, "six nearby attractions": option6, "is there any attractions nearby the hotel?": option6
+        'one': option1, 'contact information': option1, 'how can I contact the hotel': option1, 'one contact information': option1,
+        'two': option2, 'hotel policies': option2, 'two hotel policies': option2,
+        'three': option3, 'reservation': option3, "three reservation": option3, "I want to make a reservation": option3, 'I want to reserve a room': option3,
+        'four': option4, 'hotel properties' : option4, 'properties' : option4, "four hotel properties":option4,
+        'five': option5, 'direction' : option5, 'directions' : option5, "five direction":option5, "five directions":option5,
+        'six': option6, 'nearby attractions': option6, 'nearby attraction': option6,'six nearby attraction': option6, "six nearby attractions": option6, "is there any attractions nearby the hotel?": option6
     };
     annyang.addCommands(mainOption);
     annyang.start();
     const policiesCommand = {
         'accessibility policies': option21, "one accessibility policies": option21, "one accessibility policy": option21, "accessibility policy": option21,
         'general policies': option22, "general policy": option22, "two general policies": option22, "two general policy": option22,
-        'pet policies': option23, 'pet policy': option23, 'three pet policies': option23, 'three pet policy': option23,'Can I bring my dogs to the hotel?':option23, 'is your hotel pet friendly?':option23, 'can i bring my furry babies with me?': option23, 'what are the pet fees': option23, 'can i bring pets': option23, 'pet fee': option23,
+        'pet policies': option23, 'pet policy': option23, 'three pet policies': option23, 'three pet policy': option23,'Can I bring my dogs to the hotel':option23, 'is your hotel pet friendly':option23, 'can i bring my furry babies with me': option23, 'what are the pet fees': option23, 'can i bring pets': option23, 'pet fee': option23,
         'how much does it cost to bring service animals':option23, 'are service animals exempt from fees?':option23, 'do i need to pay if i bring my service animals with me?': option23, 'service animal fees': option23,
         'smoking policies': option24, 'smoking policy': option24, 'four smoking policies': option24, 'four smoking policy': option23
     };
@@ -297,6 +304,14 @@ if (annyang) {
     };
     annyang.addCommands(language);
     annyang.start();
+
+    const directionToAirport = {
+      'give me direction to the nearest airport': airportDir, 
+      'take me to the nearest airport': airportDir, 
+    };
+    annyang.addCommands(directionToAirport);
+    annyang.start();
+
     const restaurants = {
       'is food provided in the hotel' :restu,
       'restaurants nearby': restu, 'restaurant nearby': restu, 'nearby restaurant': restu,
