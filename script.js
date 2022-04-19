@@ -93,7 +93,7 @@ function option5() {
 }
 
 function option6() {
-  playByText("en-US", "There are some tourist attrions around the hotel: 1: Theatre Baton Rouge.  2. Texas Club Concert Venue.  3. Circle Bowl.  4. Independence Park. Please respond in format: go to plus the name of your desired location");
+  playByText("en-US", "There are some tourist attrions around the hotel: 1: Theatre Baton Rouge.  2. Texas Club Concert Venue.  3. Circle Bowl.  4. Independence Park.");
 }
 
 function option21() {
